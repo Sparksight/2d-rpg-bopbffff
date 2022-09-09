@@ -67,7 +67,7 @@ public class Player : Character
                 KillCharacter();
                 break;
             }
-
+             
             if (interval > float.Epsilon)
             {
                 yield return new WaitForSeconds(interval);

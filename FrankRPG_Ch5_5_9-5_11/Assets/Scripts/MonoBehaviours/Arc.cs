@@ -7,12 +7,12 @@ public class Arc : MonoBehaviour
     public IEnumerator TravelArc(Vector3 destination, float duration)
     {
         var startPosition = transform.position;
-        var personComplete = 0.0f;
+        var percentComplete = 0.0f;
         while (percentComplete <= 1.0f)
         {
-            percentComplete += deltaTime / duration
-            var currentHelight = Mathf.Sin(Mathf.PI * percentComplete);
-            transfrom.position = Vector3.Lep(startPosition, destination, percentComplete) + Vector3 up* currentHelight
+            percentComplete += Time.deltaTime / duration;
+            var currentHeight = Mathf.Sin(Mathf.PI * percentComplete);
+            transform.position = Vector3.Lerp(startPosition, destination, percentComplete) + Vector3.up * currentHeight;
 
                 yield return null;
         }

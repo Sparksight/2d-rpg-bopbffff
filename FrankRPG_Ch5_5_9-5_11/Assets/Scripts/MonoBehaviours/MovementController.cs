@@ -10,20 +10,10 @@ public class MovementController : MonoBehaviour
     // 1
     Animator animator;
 
-    // 2
-    string animationState = "AnimationState";
+    // 2;
     Rigidbody2D rb2D;
 
-    // 3
-    enum CharStates
-    {
-        walkEast = 1,
-        walkSouth = 2,
-        walkWest = 3,
-        walkNorth = 4,
 
-        idleSouth = 5
-    }
 
     private void Start()
     {
@@ -34,9 +24,20 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        // 5
-        UpdateState();
+        if (Mathf.Approximately(movement.x, 0) && Mathf.Approximately(movement.y, 0))
+        {
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            animator.SetBool("isWalking", true);
+        }
+        animator.SetFloat("xDir", movement.x);
+        animator.SetFloat("yDir", movement.y);
     }
+    
+
+ 
 
     void FixedUpdate()
     {
@@ -57,25 +58,25 @@ public class MovementController : MonoBehaviour
     private void UpdateState()
     {
         // 8
-        if (movement.x > 0)
-        {
-            animator.SetInteger(animationState, (int)CharStates.walkEast);
-        }
-        else if (movement.x < 0)
-        {
-            animator.SetInteger(animationState, (int)CharStates.walkWest);
-        }
-        else if (movement.y > 0)
-        {
-            animator.SetInteger(animationState, (int)CharStates.walkNorth);
-        }
-        else if (movement.y < 0)
-        {
-            animator.SetInteger(animationState, (int)CharStates.walkSouth);
-        }
-        else
-        {
-            animator.SetInteger(animationState, (int)CharStates.idleSouth);
-        }
+        //if (movement.x > 0)
+        //{
+        //    animator.SetInteger(animationState, (int)CharStates.walkEast);
+        //}
+        //else if (movement.x < 0)
+        //{
+        //    animator.SetInteger(animationState, (int)CharStates.walkWest);
+        //}
+        //else if (movement.y > 0)
+        //{
+        //    animator.SetInteger(animationState, (int)CharStates.walkNorth);
+        //}
+        //else if (movement.y < 0)
+        //{
+        //    animator.SetInteger(animationState, (int)CharStates.walkSouth);
+        //}
+        //else
+        //{
+        //    animator.SetInteger(animationState, (int)CharStates.idleSouth);
+        //}
     }
 }
